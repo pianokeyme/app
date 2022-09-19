@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3038A51028D8FF6300BA6E2C /* KeyMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */; };
+		3038A51228D8FF6300BA6E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A51128D8FF6300BA6E2C /* ContentView.swift */; };
+		3038A51428D8FF6600BA6E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3038A51328D8FF6600BA6E2C /* Assets.xcassets */; };
+		3038A51728D8FF6600BA6E2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3038A51628D8FF6600BA6E2C /* Preview Assets.xcassets */; };
+		3038A52128D8FF6600BA6E2C /* KeyMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52028D8FF6600BA6E2C /* KeyMeTests.swift */; };
+		3038A52B28D8FF6600BA6E2C /* KeyMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52A28D8FF6600BA6E2C /* KeyMeUITests.swift */; };
+		3038A52D28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52C28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3038A51D28D8FF6600BA6E2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3038A50428D8FF6300BA6E2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3038A50B28D8FF6300BA6E2C;
+			remoteInfo = KeyMe;
+		};
+		3038A52728D8FF6600BA6E2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3038A50428D8FF6300BA6E2C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3038A50B28D8FF6300BA6E2C;
+			remoteInfo = KeyMe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3038A50C28D8FF6300BA6E2C /* KeyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeApp.swift; sourceTree = "<group>"; };
+		3038A51128D8FF6300BA6E2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3038A51328D8FF6600BA6E2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3038A51628D8FF6600BA6E2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3038A51C28D8FF6600BA6E2C /* KeyMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3038A52028D8FF6600BA6E2C /* KeyMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeTests.swift; sourceTree = "<group>"; };
+		3038A52628D8FF6600BA6E2C /* KeyMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3038A52A28D8FF6600BA6E2C /* KeyMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeUITests.swift; sourceTree = "<group>"; };
+		3038A52C28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3038A50928D8FF6300BA6E2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A51928D8FF6600BA6E2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A52328D8FF6600BA6E2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3038A50328D8FF6300BA6E2C = {
+			isa = PBXGroup;
+			children = (
+				3038A50E28D8FF6300BA6E2C /* KeyMe */,
+				3038A51F28D8FF6600BA6E2C /* KeyMeTests */,
+				3038A52928D8FF6600BA6E2C /* KeyMeUITests */,
+				3038A50D28D8FF6300BA6E2C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3038A50D28D8FF6300BA6E2C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3038A50C28D8FF6300BA6E2C /* KeyMe.app */,
+				3038A51C28D8FF6600BA6E2C /* KeyMeTests.xctest */,
+				3038A52628D8FF6600BA6E2C /* KeyMeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3038A50E28D8FF6300BA6E2C /* KeyMe */ = {
+			isa = PBXGroup;
+			children = (
+				3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */,
+				3038A51128D8FF6300BA6E2C /* ContentView.swift */,
+				3038A51328D8FF6600BA6E2C /* Assets.xcassets */,
+				3038A51528D8FF6600BA6E2C /* Preview Content */,
+			);
+			path = KeyMe;
+			sourceTree = "<group>";
+		};
+		3038A51528D8FF6600BA6E2C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3038A51628D8FF6600BA6E2C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3038A51F28D8FF6600BA6E2C /* KeyMeTests */ = {
+			isa = PBXGroup;
+			children = (
+				3038A52028D8FF6600BA6E2C /* KeyMeTests.swift */,
+			);
+			path = KeyMeTests;
+			sourceTree = "<group>";
+		};
+		3038A52928D8FF6600BA6E2C /* KeyMeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				3038A52A28D8FF6600BA6E2C /* KeyMeUITests.swift */,
+				3038A52C28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift */,
+			);
+			path = KeyMeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3038A50B28D8FF6300BA6E2C /* KeyMe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3038A53028D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMe" */;
+			buildPhases = (
+				3038A50828D8FF6300BA6E2C /* Sources */,
+				3038A50928D8FF6300BA6E2C /* Frameworks */,
+				3038A50A28D8FF6300BA6E2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyMe;
+			productName = KeyMe;
+			productReference = 3038A50C28D8FF6300BA6E2C /* KeyMe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3038A51B28D8FF6600BA6E2C /* KeyMeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3038A53328D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMeTests" */;
+			buildPhases = (
+				3038A51828D8FF6600BA6E2C /* Sources */,
+				3038A51928D8FF6600BA6E2C /* Frameworks */,
+				3038A51A28D8FF6600BA6E2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3038A51E28D8FF6600BA6E2C /* PBXTargetDependency */,
+			);
+			name = KeyMeTests;
+			productName = KeyMeTests;
+			productReference = 3038A51C28D8FF6600BA6E2C /* KeyMeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3038A52528D8FF6600BA6E2C /* KeyMeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3038A53628D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMeUITests" */;
+			buildPhases = (
+				3038A52228D8FF6600BA6E2C /* Sources */,
+				3038A52328D8FF6600BA6E2C /* Frameworks */,
+				3038A52428D8FF6600BA6E2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3038A52828D8FF6600BA6E2C /* PBXTargetDependency */,
+			);
+			name = KeyMeUITests;
+			productName = KeyMeUITests;
+			productReference = 3038A52628D8FF6600BA6E2C /* KeyMeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3038A50428D8FF6300BA6E2C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					3038A50B28D8FF6300BA6E2C = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					3038A51B28D8FF6600BA6E2C = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 3038A50B28D8FF6300BA6E2C;
+					};
+					3038A52528D8FF6600BA6E2C = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 3038A50B28D8FF6300BA6E2C;
+					};
+				};
+			};
+			buildConfigurationList = 3038A50728D8FF6300BA6E2C /* Build configuration list for PBXProject "KeyMe" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3038A50328D8FF6300BA6E2C;
+			productRefGroup = 3038A50D28D8FF6300BA6E2C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3038A50B28D8FF6300BA6E2C /* KeyMe */,
+				3038A51B28D8FF6600BA6E2C /* KeyMeTests */,
+				3038A52528D8FF6600BA6E2C /* KeyMeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3038A50A28D8FF6300BA6E2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3038A51728D8FF6600BA6E2C /* Preview Assets.xcassets in Resources */,
+				3038A51428D8FF6600BA6E2C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A51A28D8FF6600BA6E2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A52428D8FF6600BA6E2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3038A50828D8FF6300BA6E2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3038A51228D8FF6300BA6E2C /* ContentView.swift in Sources */,
+				3038A51028D8FF6300BA6E2C /* KeyMeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A51828D8FF6600BA6E2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3038A52128D8FF6600BA6E2C /* KeyMeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3038A52228D8FF6600BA6E2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3038A52D28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift in Sources */,
+				3038A52B28D8FF6600BA6E2C /* KeyMeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3038A51E28D8FF6600BA6E2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3038A50B28D8FF6300BA6E2C /* KeyMe */;
+			targetProxy = 3038A51D28D8FF6600BA6E2C /* PBXContainerItemProxy */;
+		};
+		3038A52828D8FF6600BA6E2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3038A50B28D8FF6300BA6E2C /* KeyMe */;
+			targetProxy = 3038A52728D8FF6600BA6E2C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3038A52E28D8FF6600BA6E2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3038A52F28D8FF6600BA6E2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3038A53128D8FF6600BA6E2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		3038A53228D8FF6600BA6E2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		3038A53428D8FF6600BA6E2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyMe.app/KeyMe";
+			};
+			name = Debug;
+		};
+		3038A53528D8FF6600BA6E2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyMe.app/KeyMe";
+			};
+			name = Release;
+		};
+		3038A53728D8FF6600BA6E2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeyMe;
+			};
+			name = Debug;
+		};
+		3038A53828D8FF6600BA6E2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pianokeyme.KeyMeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = KeyMe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3038A50728D8FF6300BA6E2C /* Build configuration list for PBXProject "KeyMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3038A52E28D8FF6600BA6E2C /* Debug */,
+				3038A52F28D8FF6600BA6E2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3038A53028D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3038A53128D8FF6600BA6E2C /* Debug */,
+				3038A53228D8FF6600BA6E2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3038A53328D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3038A53428D8FF6600BA6E2C /* Debug */,
+				3038A53528D8FF6600BA6E2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3038A53628D8FF6600BA6E2C /* Build configuration list for PBXNativeTarget "KeyMeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3038A53728D8FF6600BA6E2C /* Debug */,
+				3038A53828D8FF6600BA6E2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3038A50428D8FF6300BA6E2C /* Project object */;
+}
