@@ -10,7 +10,7 @@ import AVFoundation
 
 struct ContentView: View {
     @State var isPlaying = false
-
+    let server = RealtimeServer()
 
     var body: some View {
         Button(action: {
@@ -24,6 +24,75 @@ struct ContentView: View {
                 .padding(20)
                 .overlay(
                    Circle().stroke(Color(red: 143/255, green: 0, blue: 26/255), lineWidth: 4))
+        }.onAppear(perform: connect)
+    }
+    
+    private func connect() {
+        server.connect(sampleRate: Int(AVAudioSession.sharedInstance().sampleRate), frameSize: 0.1)
+    }
+    
+    func getAudio() {
+        if (checkMicPermission()) {
+            let inputNode = audioEngine.inputNode
+            
+            let outputPath = getCacheDirectoryPath().appendingPathComponent("data.txt")
+            print("Writing to \(outputPath)")
+            
+            handleFile(url: outputPath)
+            
+            print(AVAudioSession.sharedInstance().sampleRate)
+                    
+            // onBus: 0 -> mono input
+            // bufferSize -> not guaranteed
+            // format: nil -> no translation
+            inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNode.outputFormat(forBus: 0), block: {
+                (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
+
+                let actualSampleCount = Int(buffer.frameLength)
+                var i = 0
+                var samplesAsDoubles: [Double] = []
+                            
+                while (i < actualSampleCount) {
+                    let theSample = Double((buffer.floatChannelData?.pointee[i])!)
+                    samplesAsDoubles.append(theSample)
+                    //NSLog("sample: %f", theSample)
+                    i += 1
+                }
+                
+                let audioBuffer = buffer.audioBufferList.pointee.mBuffers
+                let data = Data(bytes: audioBuffer.mData!, count: Int(audioBuffer.mDataByteSize))
+                                
+                server.send(data: data)
+                
+    //            let sampleData = samplesAsDoubles.map { String(format: "%f", $0) }.joined(separator: "\n") + "\n"
+    //
+    //            do {
+    //                if let handle = try? FileHandle(forWritingTo: outputPath) {
+    //                    handle.seekToEndOfFile() // moving pointer to the end
+    //                    handle.write(sampleData.data(using: .utf8)!) // adding content
+    //                    handle.closeFile() // closing the file
+    //                }
+    //            } //catch let error {
+                    //print("Error on writing strings to file: \(error)")
+                //}
+            })
+            
+            //try? AVAudioSession.sharedInstance().setPreferredSampleRate(16000.0)
+            //print(AVAudioSession.sharedInstance().preferredSampleRate)
+            
+            // change sampling rate of input node
+            //let newAudioFormat = AVAudioFormat.init(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: true)
+            //audioEngine.connect(inputNode, to: mixer, format: inputNode.inputFormat(forBus: 0))
+            //mixer.volume = 0
+            //audioEngine.connect(mixer, to: audioEngine.outputNode, format: newAudioFormat)
+            
+            audioEngine.prepare()
+            do {
+                setAudioSessionToRecord()
+                try audioEngine.start()
+            } catch let error as NSError {
+                print("Got an error starting audioEngine: \(error.domain), \(error)")
+            }
         }
     }
 }
@@ -113,66 +182,6 @@ func handleFile(url: URL) {
 }
 
 var audioEngine = AVAudioEngine()
-
-func getAudio() {
-    if (checkMicPermission()) {
-        let inputNode = audioEngine.inputNode
-        
-        let outputPath = getCacheDirectoryPath().appendingPathComponent("data.txt")
-        print("Writing to \(outputPath)")
-        
-        handleFile(url: outputPath)
-        
-        print(AVAudioSession.sharedInstance().sampleRate)
-                
-        // onBus: 0 -> mono input
-        // bufferSize -> not guaranteed
-        // format: nil -> no translation
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNode.outputFormat(forBus: 0), block: {
-            (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
-
-            let actualSampleCount = Int(buffer.frameLength)
-            var i = 0
-            var samplesAsDoubles: [Double] = []
-            
-            while (i < actualSampleCount) {
-                let theSample = Double((buffer.floatChannelData?.pointee[i])!)
-                samplesAsDoubles.append(theSample)
-                //NSLog("sample: %f", theSample)
-                i += 1
-            }
-            
-            let sampleData = samplesAsDoubles.map { String(format: "%f", $0) }.joined(separator: "\n") + "\n"
-
-            do {
-                if let handle = try? FileHandle(forWritingTo: outputPath) {
-                    handle.seekToEndOfFile() // moving pointer to the end
-                    handle.write(sampleData.data(using: .utf8)!) // adding content
-                    handle.closeFile() // closing the file
-                }
-            } //catch let error {
-                //print("Error on writing strings to file: \(error)")
-            //}
-        })
-        
-        //try? AVAudioSession.sharedInstance().setPreferredSampleRate(16000.0)
-        //print(AVAudioSession.sharedInstance().preferredSampleRate)
-        
-        // change sampling rate of input node
-        //let newAudioFormat = AVAudioFormat.init(commonFormat: .pcmFormatFloat32, sampleRate: 16000.0, channels: 1, interleaved: true)
-        //audioEngine.connect(inputNode, to: mixer, format: inputNode.inputFormat(forBus: 0))
-        //mixer.volume = 0
-        //audioEngine.connect(mixer, to: audioEngine.outputNode, format: newAudioFormat)
-        
-        audioEngine.prepare()
-        do {
-            setAudioSessionToRecord()
-            try audioEngine.start()
-        } catch let error as NSError {
-            print("Got an error starting audioEngine: \(error.domain), \(error)")
-        }
-    }
-}
 
 func stopAudio() {
     audioEngine.inputNode.removeTap(onBus: 0)

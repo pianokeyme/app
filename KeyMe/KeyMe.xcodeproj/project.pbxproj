@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302C61C128FB85B100FCC89D /* RealtimeServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C61C028FB85B100FCC89D /* RealtimeServer.swift */; };
 		3038A51028D8FF6300BA6E2C /* KeyMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */; };
 		3038A51228D8FF6300BA6E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A51128D8FF6300BA6E2C /* ContentView.swift */; };
 		3038A51428D8FF6600BA6E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3038A51328D8FF6600BA6E2C /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		302C61C028FB85B100FCC89D /* RealtimeServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeServer.swift; sourceTree = "<group>"; };
 		3038A50C28D8FF6300BA6E2C /* KeyMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeApp.swift; sourceTree = "<group>"; };
 		3038A51128D8FF6300BA6E2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				3038A51128D8FF6300BA6E2C /* ContentView.swift */,
 				3038A51328D8FF6600BA6E2C /* Assets.xcassets */,
 				3038A51528D8FF6600BA6E2C /* Preview Content */,
+				302C61C028FB85B100FCC89D /* RealtimeServer.swift */,
 			);
 			path = KeyMe;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				302C61C128FB85B100FCC89D /* RealtimeServer.swift in Sources */,
 				3038A51228D8FF6300BA6E2C /* ContentView.swift in Sources */,
 				3038A51028D8FF6300BA6E2C /* KeyMeApp.swift in Sources */,
 			);
@@ -417,7 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
-				DEVELOPMENT_TEAM = 9277XK8RRU;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for recording piano";
@@ -447,7 +451,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
-				DEVELOPMENT_TEAM = 9277XK8RRU;
+				DEVELOPMENT_TEAM = 62HH9Z692U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for recording piano";
