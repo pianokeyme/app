@@ -7,11 +7,15 @@
 
 import SwiftUI
 
+@available(iOS 16.0, *)
 @main
 struct KeyMeApp: App {
+    //let contentView = ContentView(audioRecorder: AudioRecorder())
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //contentView
         }
     }
 }
