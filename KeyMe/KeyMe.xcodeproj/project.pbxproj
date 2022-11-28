@@ -56,9 +56,9 @@
 		5B330475292FD80A0077F0CE /* SetupWifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWifiView.swift; sourceTree = "<group>"; };
 		5B330477292FE61F0077F0CE /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		5B33047929300A3C0077F0CE /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		5B33047B293450400077F0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B8826EF291D6423001AD7A5 /* AudioRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		5B8826F3291D687D001AD7A5 /* RecordingsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsList.swift; sourceTree = "<group>"; };
-		5B8826F5291D7D10001AD7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5BAA5012292699B400C29A28 /* KeyMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = KeyMe.entitlements; path = ../../../../../.Trash/KeyMe.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,12 +111,12 @@
 			isa = PBXGroup;
 			children = (
 				5BAA5012292699B400C29A28 /* KeyMe.entitlements */,
-				5B8826F5291D7D10001AD7A5 /* Info.plist */,
 				3038A50F28D8FF6300BA6E2C /* KeyMeApp.swift */,
 				3038A51128D8FF6300BA6E2C /* ContentView.swift */,
 				5B33047929300A3C0077F0CE /* LibraryView.swift */,
 				5B8826EF291D6423001AD7A5 /* AudioRecorder.swift */,
 				5B8826F3291D687D001AD7A5 /* RecordingsList.swift */,
+				5B33047B293450400077F0CE /* Info.plist */,
 				5B330473292FCF5E0077F0CE /* WelcomeView.swift */,
 				5B330475292FD80A0077F0CE /* SetupWifiView.swift */,
 				5B330477292FE61F0077F0CE /* PreferencesView.swift */,
@@ -453,8 +453,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
 				DEVELOPMENT_TEAM = 9277XK8RRU;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KeyMe/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = /Users/youssefelfaramawy/Projects/PianoKeyMe/app/KeyMe/KeyMe/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for recording piano";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -486,8 +486,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"KeyMe/Preview Content\"";
 				DEVELOPMENT_TEAM = 9277XK8RRU;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KeyMe/Info.plist;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = /Users/youssefelfaramawy/Projects/PianoKeyMe/app/KeyMe/KeyMe/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Need microphone access for recording piano";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
