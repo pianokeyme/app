@@ -79,7 +79,7 @@ func sendWifi(wifi_ssid: String, wifi_password: String) {
         return
     }
 
-    let body = "wifi_ssid=\(wifi_ssid) \nwifi_pass=\(wifi_password) \n#"
+    let body = "wifi_ssid=\(wifi_ssid)\nwifi_pass=\(wifi_password)\n#"
     print(body)
     let finalBody = body.data(using: .utf8)
 

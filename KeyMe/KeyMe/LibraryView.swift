@@ -13,8 +13,14 @@ struct LibraryView: View {
     @State var isRecording = false
     @State var isPlayback = false
 
-    let audioRecorder = AudioRecorder()
-    let server = RealtimeServer()
+    let audioRecorder: AudioRecorder
+    let server: RealtimeServer
+    
+    init() {
+        server = RealtimeServer()
+        audioRecorder = AudioRecorder(server: server)
+        print("library init")
+    }
     
     var body: some View {
         VStack {
@@ -42,7 +48,7 @@ struct LibraryView: View {
     }
     
     private func connect() {
-        server.connect(sampleRate: Int(AVAudioSession.sharedInstance().sampleRate), frameSize: 0.1)
+        server.connect()
     }
 }
 

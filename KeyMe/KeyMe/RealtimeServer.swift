@@ -9,28 +9,44 @@ import Foundation
 
 // https://github.com/frzi/SwiftChatApp/blob/master/App/Shared/Views/ChatScreen.swift
 class RealtimeServer {
-    private var sampleRate: Int?
-    private var frameSize: Float?
-    
     private var webSocketTask: URLSessionWebSocketTask?
 
-    func connect(sampleRate: Int, frameSize: Float) {
+    init() {
+        print("rt init")
+    }
+    
+    func connect() {
         guard webSocketTask == nil else {
             return
         }
         
-        self.sampleRate = sampleRate
-        self.frameSize = frameSize
-
         let url = URL(string: "ws://192.168.2.85:8001")!
         webSocketTask = URLSession.shared.webSocketTask(with: url)
         webSocketTask?.resume()
         
-        send(data: "{ \"sampleRate\": \(sampleRate), \"frameSize\": \(frameSize) }".data(using: .utf8)!)
+        print("connected to ws")
     }
     
     func disconnect() {
         webSocketTask?.cancel(with: .normalClosure, reason: nil)
+    }
+    
+    func send(code: UInt8, payload: String) {
+        let payloadData = payload.data(using: .utf8)!
+        
+        var data = Data(capacity: payloadData.count + 1)
+        data.append(code)
+        data.append(payloadData)
+                
+        send(data: data)
+    }
+    
+    func send(code: UInt8, buf: UnsafeRawPointer, n: Int) {
+        var data = Data(capacity: n + 1)
+        data.append(code)
+        data.append(buf.bindMemory(to: UInt8.self, capacity: n), count: n)
+        
+        send(data: data)
     }
 
     func send(data: Data) {
@@ -39,12 +55,6 @@ class RealtimeServer {
                 print("Error sending message", error)
             }
         })
-        
-//        webSocketTask?.send(.string(jsonString)) { error in
-//            if let error = error {
-//                print("Error sending message", error)
-//            }
-//        }
     }
     
     deinit {

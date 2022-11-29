@@ -11,9 +11,20 @@ import Combine
 import AVFoundation
 
 class AudioRecorder {
-    let server = RealtimeServer()
+    enum MessageCode: UInt8 {
+        case start = 100
+        case sample = 101
+        case end = 102
+    }
+    
+    let server: RealtimeServer
     var audioEngine = AVAudioEngine()
-        
+    
+    init(server: RealtimeServer) {
+        self.server = server
+        print("audio recorder init")
+    }
+
     func handleFile(url: URL) {
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: url.path) {
@@ -41,7 +52,6 @@ class AudioRecorder {
     }
     
     func checkMicPermission() -> Bool {
-
         var permissionCheck: Bool = false
 
         switch AVAudioSession.sharedInstance().recordPermission {
@@ -67,14 +77,11 @@ class AudioRecorder {
     func getAudio() {
         if (checkMicPermission()) {
             let inputNode = audioEngine.inputNode
+            let sampleRate = Int(AVAudioSession.sharedInstance().sampleRate)
             
-            let outputPath = getCacheDirectoryPath().appendingPathComponent("data.txt")
-            print("Writing to \(outputPath)")
+            NSLog("Sending start message")
+            server.send(code: MessageCode.start.rawValue, payload: "{ \"sampleRate\": \(sampleRate), \"frameSize\": 0.1 }")
             
-            handleFile(url: outputPath)
-            
-            print(AVAudioSession.sharedInstance().sampleRate)
-                    
             // onBus: 0 -> mono input
             // bufferSize -> not guaranteed
             // format: nil -> no translation
@@ -82,9 +89,8 @@ class AudioRecorder {
                 (buffer: AVAudioPCMBuffer!, time: AVAudioTime!) -> Void in
                 
                 let audioBuffer = buffer.audioBufferList.pointee.mBuffers
-                let data = Data(bytes: audioBuffer.mData!, count: Int(audioBuffer.mDataByteSize))
                 
-                self.server.send(data: data)
+                self.server.send(code: MessageCode.sample.rawValue, buf: audioBuffer.mData!, n: Int(audioBuffer.mDataByteSize))
             
             })
             
@@ -101,5 +107,7 @@ class AudioRecorder {
     func stopAudio() {
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
+        NSLog("Sending end message")
+        server.send(code: MessageCode.end.rawValue, payload: "{}")
     }
 }

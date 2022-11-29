@@ -14,7 +14,13 @@ var audioPlayer: AVPlayer!
 struct RecordingsList: View {
     @State private var showSheet = false
     
-    let audioRecorder = AudioRecorder()
+    let server: RealtimeServer
+    let audioRecorder: AudioRecorder
+    
+    init() {
+        self.server = RealtimeServer()
+        self.audioRecorder = AudioRecorder(server: server)
+    }
     
     var recordings = [Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date())]
 
