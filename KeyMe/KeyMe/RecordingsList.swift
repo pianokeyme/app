@@ -34,10 +34,10 @@ struct RecordingsList: View {
                         let url = recording.fileURL
 
                         audioPlayer = AVPlayer(url: url)
-                        print("About to play...")
+                        //print("About to play...")
                         audioPlayer.volume = 1.0
-                        audioPlayer.play()
-                        print("...and we're playing!")
+                        //audioPlayer.play()
+                        //print("...and we're playing!")
                         showSheet.toggle()
                     }
                     .swipeActions {
@@ -50,7 +50,7 @@ struct RecordingsList: View {
         }
         .listStyle(PlainListStyle())
         .sheet(isPresented: $showSheet) {
-            RecordBottomSheet(isRecord: true)
+            RecordBottomSheet()
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.hidden)
         }
@@ -58,39 +58,51 @@ struct RecordingsList: View {
 }
 
 struct RecordBottomSheet: View {
-    @State var isPlaying: Bool
+    @State var isPlaying: Bool = false
     @State var selectedRate = "1.0"
     
     var playbackRates = ["0.25", "0.5", "0.75", "1.0", "1.25", "1.5", "1.75", "2.0"]
-    
-    init(isRecord: Bool) {
-        self.isPlaying = isRecord
-    }
     
     var body: some View {
         Button(action: {
             NSLog("Button click")
             isPlaying.toggle()
-            isPlaying ? audioPlayer.play() : audioPlayer.pause()
+            isPlaying ? audioPlayer.playImmediately(atRate: Float(selectedRate)!) : audioPlayer.pause()
         })
         {
-            Image(systemName: isPlaying ? "pause.fill" : "play.fill")
-                .font(.system(size: 50, weight: .bold))
-                .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
-                .padding(20)
-                .overlay(
-                    Circle().stroke(Color(red: 143/255, green: 0, blue: 26/255), lineWidth: 4))
+            if isPlaying {
+                Image(systemName: "pause.fill")
+                    .font(.system(size: 50, weight: .bold))
+                    .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
+                    .padding(20)
+                    .overlay(
+                        Circle().stroke(Color(red: 143/255, green: 0, blue: 26/255), lineWidth: 4))
+            } else {
+                Image(systemName: "play.fill")
+                    .font(.system(size: 50, weight: .bold))
+                    .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
+                    .padding(20)
+                    .overlay(
+                        Circle().stroke(Color(red: 143/255, green: 0, blue: 26/255), lineWidth: 4))
+            }
         }
-        Picker("Playback Rate", selection: $selectedRate) {
-            ForEach(playbackRates, id: \.self) {
-                Text($0)
-            }.padding(.vertical)
+        if (!isPlaying) {
+            Picker("Playback Rate", selection: $selectedRate) {
+                ForEach(playbackRates, id: \.self) {
+                    Text($0)
+                }
+            }
+            .onChange(of: selectedRate, perform: { _ in
+                audioPlayer.rate = Float(selectedRate)!
+                audioPlayer.pause()
+            })
+            .pickerStyle(.wheel)
+        } else {
+            Picker("Playback Rate", selection: $selectedRate) {
+                Text(selectedRate).tag(0)
+            }
+            .pickerStyle(.wheel)
         }
-        .onChange(of: selectedRate, perform: { _ in
-            setPlayerRate(player: audioPlayer, rate: Float(selectedRate)!)
-            audioPlayer.playImmediately(atRate: Float(selectedRate)!)
-        })
-        .pickerStyle(.wheel)
     }
 }
 
@@ -118,24 +130,6 @@ struct Composition: Codable, Hashable, Identifiable {
     var analyzed_id: Int
     var created_by: Int
     var created_at: Date
-}
-
-func setPlayerRate(player: AVPlayer, rate: Float) {
-    // AVFoundation wants us to do most things on the main queue.
-    DispatchQueue.main.async {
-        if (rate == player.rate) {
-            return
-        }
-        if (rate > 2.0 || rate < -2.0) {
-            let playerItem = player.currentItem
-            player.replaceCurrentItem(with: nil)
-            player.replaceCurrentItem(with: playerItem)
-            player.rate = rate
-        } else {
-            // No problems "out of the box" with rates in the range [-2.0,2.0].
-            player.rate = rate
-        }
-    }
 }
 
 @available(iOS 16.0, *)
