@@ -40,6 +40,10 @@ struct SetupWifiView: View {
                     
                     Spacer()
                     
+                    Text("Please connect to KeyMe Wi-Fi before submitting")
+                        .foregroundColor(Color.black.opacity(0.5))
+                        .multilineTextAlignment(.center)
+                    
                     PrimaryButton(title: "Submit")
                         .onTapGesture {
                             sendWifi(wifi_ssid: self.wifi_ssid, wifi_password: self.wifi_password)
@@ -48,12 +52,6 @@ struct SetupWifiView: View {
                         .padding(.vertical)
                         .disabled(wifi_ssid.isEmpty || wifi_password.isEmpty)
                         .opacity((wifi_ssid.isEmpty || wifi_password.isEmpty) ? 0.5 : 1.0)
-                    
-                    NavigationLink(destination: PreferencesView(), label: {
-                        Text("If you see RED, please CLICK HERE")
-                            .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
-                            .padding(.vertical)
-                    })
                     
                     NavigationLink(destination: PreferencesView(), isActive: $showPreferences) {
                         EmptyView()
@@ -64,9 +62,11 @@ struct SetupWifiView: View {
                 Spacer()
                 Divider()
                 Spacer()
-                Text("Please connect to KeyMe Wi-Fi before submitting")
-                    .foregroundColor(Color.black.opacity(0.5))
-                    .multilineTextAlignment(.center)
+                NavigationLink(destination: PreferencesView(), label: {
+                    Text("If you don't see RED, please CLICK HERE")
+                        .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
+                        .padding(.vertical)
+                })
             }
             .padding()
         }
@@ -80,11 +80,7 @@ func sendWifi(wifi_ssid: String, wifi_password: String) {
     }
 
     let body = "wifi_ssid=\(wifi_ssid)\nwifi_pass=\(wifi_password)\n#"
-    print(body)
     let finalBody = body.data(using: .utf8)
-
-    print(wifi_ssid)
-    print(wifi_password)
 
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
