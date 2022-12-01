@@ -19,7 +19,6 @@ struct LibraryView: View {
     init() {
         server = RealtimeServer()
         audioRecorder = AudioRecorder(server: server)
-        print("library init")
     }
     
     var body: some View {
@@ -28,8 +27,14 @@ struct LibraryView: View {
             .safeAreaInset(edge: .bottom) {
                 bottomBar
             }
+            .refreshable {
+                ApiService.shared.getAllRecordings()
+            }
         }
         .navigationTitle("Library")
+        .onAppear {
+            ApiService.shared.getAllRecordings()
+        }
     }
     
     var bottomBar: some View {

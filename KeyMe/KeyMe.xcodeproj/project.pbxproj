@@ -15,6 +15,7 @@
 		3038A52128D8FF6600BA6E2C /* KeyMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52028D8FF6600BA6E2C /* KeyMeTests.swift */; };
 		3038A52B28D8FF6600BA6E2C /* KeyMeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52A28D8FF6600BA6E2C /* KeyMeUITests.swift */; };
 		3038A52D28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3038A52C28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift */; };
+		30E69EAD29386DDB002541F0 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E69EAC29386DDB002541F0 /* ApiService.swift */; };
 		5B330474292FCF5E0077F0CE /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B330473292FCF5E0077F0CE /* WelcomeView.swift */; };
 		5B330476292FD80A0077F0CE /* SetupWifiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B330475292FD80A0077F0CE /* SetupWifiView.swift */; };
 		5B330478292FE61F0077F0CE /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B330477292FE61F0077F0CE /* PreferencesView.swift */; };
@@ -52,6 +53,7 @@
 		3038A52628D8FF6600BA6E2C /* KeyMeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyMeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3038A52A28D8FF6600BA6E2C /* KeyMeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeUITests.swift; sourceTree = "<group>"; };
 		3038A52C28D8FF6600BA6E2C /* KeyMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		30E69EAC29386DDB002541F0 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		5B330473292FCF5E0077F0CE /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		5B330475292FD80A0077F0CE /* SetupWifiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupWifiView.swift; sourceTree = "<group>"; };
 		5B330477292FE61F0077F0CE /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				3038A51328D8FF6600BA6E2C /* Assets.xcassets */,
 				3038A51528D8FF6600BA6E2C /* Preview Content */,
 				302C61C028FB85B100FCC89D /* RealtimeServer.swift */,
+				30E69EAC29386DDB002541F0 /* ApiService.swift */,
 			);
 			path = KeyMe;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				5B8826F4291D687D001AD7A5 /* RecordingsList.swift in Sources */,
 				5B33047A29300A3C0077F0CE /* LibraryView.swift in Sources */,
 				3038A51228D8FF6300BA6E2C /* ContentView.swift in Sources */,
+				30E69EAD29386DDB002541F0 /* ApiService.swift in Sources */,
 				5B330478292FE61F0077F0CE /* PreferencesView.swift in Sources */,
 				3038A51028D8FF6300BA6E2C /* KeyMeApp.swift in Sources */,
 				5B330474292FCF5E0077F0CE /* WelcomeView.swift in Sources */,

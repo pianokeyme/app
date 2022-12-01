@@ -17,22 +17,22 @@ struct RecordingsList: View {
     let server: RealtimeServer
     let audioRecorder: AudioRecorder
     
+    @StateObject var apiService = ApiService.shared
+    
     init() {
         self.server = RealtimeServer()
         self.audioRecorder = AudioRecorder(server: server)
     }
-    
-    var recordings = [Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/CantinaBand3.wav")!, createdAt: Date()), Recording(fileURL: URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/Fanfare60.wav")!, createdAt: Date())]
 
     var body: some View {
         List {
-            ForEach(recordings, id: \.createdAt) { recording in
-                RecordingRow(audioURL: recording.fileURL)
+            ForEach(apiService.recordings, id: \.id) { recording in
+                RecordingRow(recording: recording)
                     .onTapGesture {
                         audioRecorder.setAudioSessionToRecord()
                         
-                        let url = recording.fileURL
-
+                        let url = URL(string: recording.audio_url)!
+                        
                         audioPlayer = AVPlayer(url: url)
                         //print("About to play...")
                         audioPlayer.volume = 1.0
@@ -42,6 +42,7 @@ struct RecordingsList: View {
                     }
                     .swipeActions {
                         Button(role: .destructive) {
+                            ApiService.shared.removeRecording(recording)
                         } label: {
                             Label("Delete", systemImage: "trash")
                         }
@@ -107,33 +108,47 @@ struct RecordBottomSheet: View {
 }
 
 struct RecordingRow: View {
+    let recording: Recording
+    let name: String
     
-    var audioURL: URL
+    init(recording: Recording) {
+        self.recording = recording
+        
+        var name = recording.name
+        
+        if (name.isEmpty) {
+            let formatter = ISO8601DateFormatter()
+            formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+            
+            let date = formatter.date(from: recording.created_at)!
+            name = date.formatted(
+                Date.FormatStyle()
+                    .month(.abbreviated)
+                    .day(.defaultDigits)
+                    .weekday(.abbreviated)
+                    .hour()
+                    .minute()
+            )
+        }
+        
+        self.name = name
+    }
     
     var body: some View {
         HStack {
-            Text("\(audioURL.lastPathComponent)")
+            Text(name)
             Spacer()
         }
     }
 }
 
-struct Recording {
-    let fileURL: URL
-    let createdAt: Date
-}
-
-struct Composition: Codable, Hashable, Identifiable {
-    var id: Int
-    var name: String
-    var audio_id: Int
-    var analyzed_id: Int
-    var created_by: Int
-    var created_at: Date
-}
-
 @available(iOS 16.0, *)
 struct RecordingsList_Previews: PreviewProvider {
+    static let recordings: [Recording] = [
+        Recording(audio_id: 1, audio_url: "https://keyme-dev.s3.ca-central-1.amazonaws.com/EwtLGtEgD6QPBMY94pxrLx/audio.mp3", audio_version: 1, created_at: "2022-11-30T23:02:42.305818-05:00", created_by: 1, id: 1, is_preprocessed: false, name: ""),
+        Recording(audio_id: 1, audio_url: "https://keyme-dev.s3.ca-central-1.amazonaws.com/EwtLGtEgD6QPBMY94pxrLx/audio.mp3", audio_version: 1, created_at: "2022-11-30T23:02:42.305818-05:00", created_by: 1, id: 2, is_preprocessed: true, name: "Rondo Alla Turca")
+    ]
+        
     static var previews: some View {
         RecordingsList()
     }
