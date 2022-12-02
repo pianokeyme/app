@@ -14,11 +14,9 @@ struct LibraryView: View {
     @State var isPlayback = false
 
     let audioRecorder: AudioRecorder
-    let server: RealtimeServer
     
     init() {
-        server = RealtimeServer()
-        audioRecorder = AudioRecorder(server: server)
+        audioRecorder = AudioRecorder()
     }
     
     var body: some View {
@@ -41,7 +39,14 @@ struct LibraryView: View {
         Button(action: {
             NSLog("Button click")
             isRecording.toggle()
-            isRecording ? audioRecorder.getAudio() : audioRecorder.stopAudio()
+            
+            if (isRecording) {
+                connect()
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                isRecording ? audioRecorder.getAudio() : audioRecorder.stopAudio()
+            }
         })
         {
             Image(systemName: isRecording ? "stop.circle" : "record.circle")
@@ -49,11 +54,10 @@ struct LibraryView: View {
                 .foregroundColor(Color(red: 143/255, green: 0, blue: 26/255))
                 .padding(20)
         }
-        .onAppear(perform: connect)
     }
     
     private func connect() {
-        server.connect()
+        RealtimeServer.shared.connect()
     }
 }
 

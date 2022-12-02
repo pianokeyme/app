@@ -9,18 +9,19 @@ import Foundation
 
 // https://github.com/frzi/SwiftChatApp/blob/master/App/Shared/Views/ChatScreen.swift
 class RealtimeServer {
+    static let shared = RealtimeServer()
+    
     private var webSocketTask: URLSessionWebSocketTask?
 
-    init() {
-        print("rt init")
+    private init() {
     }
     
     func connect() {
-        guard webSocketTask == nil else {
-            return
+        if (webSocketTask != nil) {
+            disconnect()
         }
-        
-        let url = URL(string: "ws://192.168.2.85:8001")!
+
+        let url = URL(string: "ws://192.168.1.155:8001")!
         webSocketTask = URLSession.shared.webSocketTask(with: url)
         webSocketTask?.resume()
         

@@ -18,6 +18,38 @@ struct PreferencesView: View {
     @State var selectedColor = Color(UIColor(red: 1, green: 0, blue: 0, alpha: 1))
     @State var showLibrary = false
     
+    func sendColor(_ color: Color) {
+        let hex = colorToHex(color)
+        
+        let preferences = Preferences(size: selectedSize, scheme: selectedScheme, color: hex)
+        
+        ApiService.shared.savePreferences(preferences)
+    }
+    
+    func sendScheme(_ scheme: String) {
+        let hex = colorToHex(selectedColor)
+        
+        let preferences = Preferences(size: selectedSize, scheme: scheme, color: hex)
+        
+        ApiService.shared.savePreferences(preferences)
+    }
+
+    func sendSize(_ size: String) {
+        let hex = colorToHex(selectedColor)
+        
+        let preferences = Preferences(size: size, scheme: selectedScheme, color: hex)
+        
+        ApiService.shared.savePreferences(preferences)
+    }
+    
+    func sendPreferences() {
+        let hex = colorToHex(selectedColor)
+        
+        let preferences = Preferences(size: selectedSize, scheme: selectedScheme, color: hex)
+        
+        ApiService.shared.savePreferences(preferences)
+    }
+    
     var body: some View {
         VStack {
             Form {
@@ -27,14 +59,24 @@ struct PreferencesView: View {
                             Text($0)
                         }
                     }
+                    .onChange(of: selectedSize, perform: { newSize in
+                        sendSize(newSize)
+                    })
                 }
                 Section {
                     ColorPicker("LED Color", selection: $selectedColor, supportsOpacity: false)
+                        .onChange(of: selectedColor, perform: { newColor in
+                                sendColor(newColor)
+                        })
+
                     Picker("Color Scheme", selection: $selectedScheme) {
                         ForEach(PreferencesView.colorSchemes, id: \.self) {
                             Text($0)
                         }
                     }
+                    .onChange(of: selectedScheme, perform: { newScheme in
+                            sendScheme(newScheme)
+                    })
                 }
             }
             
@@ -44,12 +86,7 @@ struct PreferencesView: View {
             .navigationTitle("Preferences")
             .toolbar {
                 Button("Save") {
-                    let hex = colorToHex(selectedColor)
-                    
-                    let preferences = Preferences(size: selectedSize, scheme: selectedScheme, color: hex)
-                    
-                    ApiService.shared.savePreferences(preferences)
-                    
+                    sendPreferences()
                     showLibrary.toggle()
                 }
             }

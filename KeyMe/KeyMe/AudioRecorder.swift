@@ -17,13 +17,7 @@ class AudioRecorder {
         case end = 102
     }
     
-    let server: RealtimeServer
     var audioEngine = AVAudioEngine()
-    
-    init(server: RealtimeServer) {
-        self.server = server
-        print("audio recorder init")
-    }
 
     func handleFile(url: URL) {
         let fileManager = FileManager.default
@@ -49,6 +43,7 @@ class AudioRecorder {
     func setAudioSessionToRecord() {
         try? AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default)
         try? AVAudioSession.sharedInstance().setActive(true)
+        try? AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
     }
     
     func checkMicPermission() -> Bool {
@@ -80,7 +75,7 @@ class AudioRecorder {
             let sampleRate = Int(AVAudioSession.sharedInstance().sampleRate)
             
             NSLog("Sending start message")
-            server.send(code: MessageCode.start.rawValue, payload: "{ \"sampleRate\": \(sampleRate), \"frameSize\": 0.1 }")
+            RealtimeServer.shared.send(code: MessageCode.start.rawValue, payload: "{ \"sampleRate\": \(sampleRate), \"frameSize\": 0.1 }")
             
             // onBus: 0 -> mono input
             // bufferSize -> not guaranteed
@@ -90,7 +85,7 @@ class AudioRecorder {
                 
                 let audioBuffer = buffer.audioBufferList.pointee.mBuffers
                 
-                self.server.send(code: MessageCode.sample.rawValue, buf: audioBuffer.mData!, n: Int(audioBuffer.mDataByteSize))
+                RealtimeServer.shared.send(code: MessageCode.sample.rawValue, buf: audioBuffer.mData!, n: Int(audioBuffer.mDataByteSize))
             
             })
             
@@ -108,6 +103,10 @@ class AudioRecorder {
         audioEngine.inputNode.removeTap(onBus: 0)
         audioEngine.stop()
         NSLog("Sending end message")
-        server.send(code: MessageCode.end.rawValue, payload: "{}")
+        RealtimeServer.shared.send(code: MessageCode.end.rawValue, payload: "{}")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            RealtimeServer.shared.disconnect()
+        }
     }
 }

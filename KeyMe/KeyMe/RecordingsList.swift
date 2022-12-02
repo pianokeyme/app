@@ -14,14 +14,12 @@ var audioPlayer: AVPlayer!
 struct RecordingsList: View {
     @State private var showSheet = false
     
-    let server: RealtimeServer
     let audioRecorder: AudioRecorder
     
     @StateObject var apiService = ApiService.shared
     
     init() {
-        self.server = RealtimeServer()
-        self.audioRecorder = AudioRecorder(server: server)
+        self.audioRecorder = AudioRecorder()
     }
 
     var body: some View {
@@ -29,15 +27,22 @@ struct RecordingsList: View {
             ForEach(apiService.recordings, id: \.id) { recording in
                 RecordingRow(recording: recording)
                     .onTapGesture {
-                        audioRecorder.setAudioSessionToRecord()
+                        PlaybackServer.shared.connect()
                         
-                        let url = URL(string: recording.audio_url)!
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            PlaybackServer.shared.send(code: 100, payload: "{ \"recordingId\": \(recording.id) }")
+                            
+                            audioRecorder.setAudioSessionToRecord()
+                            
+                            let url = URL(string: recording.audio_url)!
+                            
+                            audioPlayer = AVPlayer(url: url)
+                            //print("About to play...")
+                            audioPlayer.volume = 1.0
+                            //audioPlayer.play()
+                            //print("...and we're playing!")
+                        }
                         
-                        audioPlayer = AVPlayer(url: url)
-                        //print("About to play...")
-                        audioPlayer.volume = 1.0
-                        //audioPlayer.play()
-                        //print("...and we're playing!")
                         showSheet.toggle()
                     }
                     .swipeActions {
@@ -54,6 +59,12 @@ struct RecordingsList: View {
             RecordBottomSheet()
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.hidden)
+                .onDisappear {
+                    PlaybackServer.shared.send(code: 103, payload: "{}")
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                        PlaybackServer.shared.disconnect()
+                    }
+                }
         }
     }
 }
@@ -64,11 +75,29 @@ struct RecordBottomSheet: View {
     
     var playbackRates = ["0.25", "0.5", "0.75", "1.0", "1.25", "1.5", "1.75", "2.0"]
     
+    func play() {
+        let rate = Float(selectedRate)!
+        PlaybackServer.shared.send(code: 101, payload: "{ \"rate\": \(rate) }")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            audioPlayer.playImmediately(atRate: rate)
+        }
+    }
+    
+    func pause() {
+        PlaybackServer.shared.send(code: 102, payload: "{}")
+        audioPlayer.pause()
+    }
+    
     var body: some View {
         Button(action: {
             NSLog("Button click")
             isPlaying.toggle()
-            isPlaying ? audioPlayer.playImmediately(atRate: Float(selectedRate)!) : audioPlayer.pause()
+            
+            if (isPlaying) {
+                play()
+            } else {
+                pause()
+            }
         })
         {
             if isPlaying {
